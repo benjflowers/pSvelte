@@ -1,17 +1,36 @@
 let sketch = p5 => {
-  var t = .01
+
+  var inc = .01;
+  var scl = 100;
+  var rows;// = p5.floor(p5.height*scl);
+  var cols;// = p5.floor(p5.width*scl);
+  var offset;
+  var offset;
   p5.setup = () => {
-    p5.createCanvas(300, 300);
-    p5.background(60, 40, 800);
+    p5.createCanvas(400, 400);
+    p5.background(200, 200, 200);
+    p5.strokeWeight(3);
+
+    rows = p5.floor(p5.height/scl);
+    cols = p5.floor(p5.width/scl);
+    offset = p5.ceil(scl/2);
+
+    p5.noLoop();
   }
 
   p5.draw = () => {
-    let stroke = p5.noise(t) * 120
-    p5.stroke(100,stroke,20);
-    p5.translate(p5.width/2, p5.height/2)
-    p5.line(0, 0, p5.cos(t) * 80, p5.sin(t) * 80);
+    p5.noFill();
 
-    t += .01;
+    for(let y = 0; y < cols; y++) {
+      p5.beginShape();
+
+      for(let x = 0; x < rows; x++) {
+
+        p5.vertex(x*scl + offset, y*scl + offset);
+      }
+      p5.endShape();
+    }
+    inc += .01;
   }
 }
 

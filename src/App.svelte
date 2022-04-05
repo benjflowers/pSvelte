@@ -1,6 +1,7 @@
 <script>
   import { Router, Route, Link } from "svelte-navigator";
   import P5Canvas from "./components/P5Canvas.svelte";
+  import Home from "./components/Home.svelte"
   import dots from "./sketchbook/dots";
   import lines from "./sketchbook/lines";
 </script>
@@ -26,7 +27,7 @@
 
   <main>
     <Route path="/">
-      <p>Home sweet home...</p>
+      <Home/>
     </Route>
 
     <Route path="dot">

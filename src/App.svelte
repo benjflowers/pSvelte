@@ -1,4 +1,5 @@
 <script>
+  import { Router, Route, Link } from "svelte-navigator";
   import P5Canvas from "./components/P5Canvas.svelte";
   import dots from "./sketchbook/dots";
   import lines from "./sketchbook/lines";
@@ -12,11 +13,32 @@
   }
 </style>
 
-<main>
-  <div class="sketch" id="dot">
-    <P5Canvas id="dot" sketch={dots} />
-  </div>
-  <div class="sketch" id="lines">
-    <P5Canvas id="lines" sketch={lines} />
-  </div>
-</main>
+<Router>
+  <header>
+    <h1>Sketches</h1>
+
+    <nav>
+      <Link to="/">Home</Link>
+      <Link to="dot">Dots</Link>
+      <Link to="lines">Lines</Link>
+    </nav>
+  </header>
+
+  <main>
+    <Route path="/">
+      <p>Home sweet home...</p>
+    </Route>
+
+    <Route path="dot">
+      <div class="sketch" id="dot">
+        <P5Canvas id="dot" sketch={dots} />
+      </div>
+    </Route>
+
+    <Route path="lines">
+      <div class="sketch" id="lines">
+        <P5Canvas id="lines" sketch={lines} />
+      </div>
+    </Route>
+  </main>
+</Router>

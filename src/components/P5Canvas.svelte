@@ -6,6 +6,6 @@
   import p5 from "../p5.js";
 
   onMount(function() {
-    let myp5 = new p5(sketch, id);
+    new p5(sketch, id);
   });
 </script>
